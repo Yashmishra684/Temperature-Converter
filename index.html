@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            padding: 50px 100px;
+        }
+        h1{
+            text-align: center;
+        }
+        #container{
+            text-align: center;
+            background-color: chocolate;
+            padding: 100px;
+        }
+        .input-div{
+            display: inline-block;
+        }
+        .inp{
+          padding: 5px 10px;
+          margin: 10px;
+          font-size: 20px;
+          font-weight: bold;
+          text-align: center;
+        }
+        label{
+            font-size: 20px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <div class="input-div">
+            <label>Celsius</label><br>
+            <input type="number" value="0" id="cel" class="inp">
+            </div>
+            <div class="input-div">
+                <label>Fahrenheit</label><br>
+                <input type="number" value="67" id="fah" class="inp">
+            </div>
+    </div>
+    <script>
+        let cel = document.getElementById("cel");  //declaring the variable 
+        let fah = document.getElementById("fah");
+
+        cel.addEventListener('input',function()   //anonymous function
+        {
+         let c = this.value;     //To get the value
+         let f = (c * 9/5) + 32;
+         if(!Number.isInteger(f)){    //if number is integer then it is true but number is not integer then we have to use Number class and .isInteger(method)
+             f = f.toFixed(5);    // if output is in decimal form then we use toFixed(function) that tells us how much digit we want after the decimal..
+         }
+         
+          // celsius to fahrenheit conversion formula....In c we will enter celsius and in f it is used to convert celisus into fahrenheit.
+
+         fah.value = f;   //store the fahrenheit value in f and that in fah variable declared above..
+        });
+
+        fah.addEventListener('input',function()
+        {
+         let f = this.value;  
+         let c = (f - 32) * 5/9;
+         if(!Number.isInteger(c)){    
+             c = c.toFixed(5);
+         }
+         
+         // fahrenheit to celsius conversion formula ... In f we will enter fahrenheit value and in c it is used to convert fahrenheit to celsius.
+
+         cel.value = c;
+        });
+    </script>
+</body>
+</html>
